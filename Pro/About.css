@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif; /* Choose your preferred font */
+    line-height: 1.6;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.navbar {
+    margin-top: 1rem;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.navbar a.active {
+    font-weight: bold;
+}
+
+/* Sections */
+section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+#accueil {
+    background-color: #f4f4f4;
+}
+
+#projets {
+    background-color: #eaeaea;
+}
+
+#apropos {
+    background-color: #f4f4f4;
+}
+
+#contact {
+    background-color: #eaeaea;
+}
+
+/* Project Cards */
+.projet {
+    margin-bottom: 2rem;
+}
+
+.projet img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* About Me */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profil-image {
+    margin-right: 2rem;
+}
+
+.profil-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar a {
+        margin: 0.5rem 0;
+    }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    table{border: 3px solid #4a06e7;}
+    td {
+        text-align: center;
+    }
+    .texteAlternatif{
+        font-family: sans-serif;
+        font-size: .7rem;
+        color: darkorange;
+        vertical-align:bottom;
+        text-align: right;
+        padding-right: -4px;margin-right: -4px;
+    }
+    span{        padding-right: -4px;margin-right: -4px;
+}
+    </style>
+    
+</head>
+<body>
+    <div class="container-sm">        
+        
+        <form>
+            <div class="row  m-4">     
+                <div class="col-md-2">
+                    <label for="inputCity" class="form-label">Dimension du tableau</label>
+                    <input type="text" class="form-control" id="dim_tab">
+                </div>
+                <div class="col-md-2">
+                    <label for="inputState" class="form-label">La valeur minimale</label>
+                    <input type="text" class="form-control" id="borne_inf">
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">La valeur maximale</label>
+                    <input type="text" class="form-control" id="borne_sup">
+                </div> 
+                
+            </div>
+               
+                <div class="col-md-6 ms-2 "> 
+                   <div class="row m-4">    
+                    <input type="button" class="btn btn-primary btn-block" onclick="Afficher()" value="Générez un tableau"/>
+                </div>
+                      <div class="row m-4" id="afficherTableau"> </div>   
+                </div>
+                <div class="row m-4" id="afficherTableau1"> </div>   
+
+        </form>
+        
+ </div>
+</body>
+
+<script>
+   
+
+    function Afficher() {
+        document.getElementById("afficherTableau").innerHTML="";             
+        document.getElementById("afficherTableau").innerHTML=RemplirTableau();
+    }
+    function randomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function RemplirTableau(){
+    var dim_tab=document.getElementById("dim_tab").value;
+    var borne_inf=document.getElementById("borne_inf").value;
+    var borne_sup=document.getElementById("borne_sup").value;
+    var res="";
+    if(isNaN(dim_tab) == true ||  isNaN(borne_inf)==true || isNaN(borne_sup)==true
+        || dim_tab == '' ||  borne_inf=='' || borne_sup==''|| borne_inf>=borne_sup)
+    {
+        res="Une faute...";
+    }
+    else{
+        var T=new Array();
+        var Tab2=new Array();
+        var nbr=0;
+        //Remplissage
+        for(var i=0;i<parseInt(dim_tab);i++){
+            nbr=randomInteger(parseInt(borne_inf),  parseInt(borne_sup));
+            T[i]=nbr;
+            Tab2[i]=nbr;
+            
+        }      
+        //Affichage
+         res="<table class='table table-bordered table-striped'><tr>";
+            var largeur=0;
+        for(var i=0;i<T.length;i++)
+        {
+            if ( largeur<9)
+            {
+                res+= "<td>"+T[i]+"<sub>  <span class='texteAlternatif'></span></td>";
+                largeur+=1;
+            }
+            else{
+                res+= "<td>"+T[i]+"<sub>  <span class='texteAlternatif'></span></td></tr><tr>";
+                largeur=0;
+            }            
+        }
+        res+= "</tr></table>"; 
+        //////////  
+        return res;
+    }        
+    }
+//result;
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+</html>
